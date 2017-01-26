@@ -43,10 +43,10 @@ data Post = Post { pNo       :: Int
                  , pMD5      :: Maybe String } deriving Show
 
 -- Generate JSON instances for Board and Page.
-concat <$> mapM (deriveJSON defaultOptions) [''Board, ''Page]
+$(concat <$> mapM (deriveJSON defaultOptions) [''Board, ''Page])
 
 -- Generate JSON instances for Thread and Post using more advanced parsing rules.
-concat <$> mapM (deriveJSON defaultOptions { fieldLabelModifier = map toLower . drop 1}) [''Thread, ''Post]
+$(concat <$> mapM (deriveJSON defaultOptions { fieldLabelModifier = map toLower . drop 1}) [''Thread, ''Post])
 
 {-|
     The 'parseBoard' function packs a given JSON String as a lazy ByteString and attempts to decode it using Aeson.
