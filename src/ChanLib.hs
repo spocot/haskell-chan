@@ -101,3 +101,6 @@ getBoard url = do rsp <- downloadURL url
                     (Right r)  -> case (parseBoard r) of
                                     (Just b) -> return $ Right b
                                     _        -> return $ Left "JSON parse error."
+
+getAllThreads :: Board -> [Thread]
+getAllThreads (Board pages) = concatMap (threads) pages
