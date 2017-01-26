@@ -81,7 +81,7 @@ strToRequest url = uriToRequest <$> parseURI url
 -}
 downloadURL :: String -> IO (Either String String)
 downloadURL s = do case (strToRequest s) of
-                     Nothing  -> return $ Left "Parse error on url"
+                     Nothing  -> return $ Left "URL parse error."
                      Just req -> do resp <- simpleHTTP req
                                     case resp of
                                       Left x  -> return $ Left ("Error connecting: " ++ show x)
@@ -89,12 +89,16 @@ downloadURL s = do case (strToRequest s) of
                                                    (2,_,_) -> return $ Right (rspBody r)
                                                    _       -> return $ Left  (show r)
  
-testFunc :: Bool -> IO ()
-testFunc verbose = do rsp <- downloadURL "http://a.4cdn.org/g/catalog.json"
-                      if verbose then print rsp else return ()
-                      case rsp of
-                        (Left err) -> putStrLn err
-                        (Right r)  -> case (parseBoard r) of
-                                       Nothing  -> putStrLn "Error parsing..."
-                                       (Just x) -> print x
+{-|
+    The 'getBoard' function downloads and parses a chan board given a URL as a String.
+    IO (Left String) on failure.
+    IO (Right Board) on sucess.
+-}
+getBoard :: String -> IO (Either String Board)
+getBoard url = do rsp <- downloadURL url
+                  case rsp of
+                    (Left err) -> return $ Left err
+                    (Right r)  -> case (parseBoard r) of
+                                    (Just b) -> return $ Right b
+                                    _        -> return $ Left "JSON parse error."
                                
