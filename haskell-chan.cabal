@@ -23,6 +23,7 @@ library
                      , aeson
                      , bytestring
                      , yesod
+
   default-language:    Haskell2010
 
 executable haskell-chan-exe
