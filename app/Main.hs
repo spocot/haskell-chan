@@ -1,6 +1,7 @@
 module Main where
 
 import ChanLib
+import ChanWeb
 
 getG = getBoard "http://a.4cdn.org/g/catalog.json"
 
