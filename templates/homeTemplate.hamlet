@@ -1,0 +1,7 @@
+$doctype 5
+<html>
+    <head>
+        <title>Test
+    <body>
+        <p>
+            <a href=@{BoardR}>View Parsed
