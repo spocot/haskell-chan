@@ -7,6 +7,7 @@
 module ChanWeb where
 
 import Yesod
+import Text.Hamlet
 import ChanLib
 
 data App = App
@@ -18,7 +19,7 @@ mkYesod "App" [parseRoutes|
 
 instance Yesod App
 
-getHomeR = defaultLayout [whamlet|<a href=@{BoardR "g"}>View Parsed|]
+getHomeR = defaultLayout $(widgetFile "homeTemplate")--[whamlet|<a href=@{BoardR "g"}>View Parsed|]
 
 getBoardR :: String -> Handler Html
 getBoardR b = defaultLayout $ do

@@ -23,6 +23,7 @@ library
                      , aeson
                      , bytestring
                      , yesod
+                     , shakespeare
 
   default-language:    Haskell2010
 
