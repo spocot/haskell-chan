@@ -18,9 +18,7 @@ mkYesod "App" [parseRoutes|
 
 instance Yesod App
 
-g = "g" :: String
-
-getHomeR = defaultLayout [whamlet|<a href=@{BoardR g}>View Parsed|]
+getHomeR = defaultLayout [whamlet|<a href=@{BoardR "g"}>View Parsed|]
 
 getBoardR :: String -> Handler Html
 getBoardR b = defaultLayout $ do
