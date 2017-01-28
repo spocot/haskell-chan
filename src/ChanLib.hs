@@ -32,7 +32,7 @@ data Thread = Thread { tNo          :: Int
 
 data Post = Post { pNo       :: Int
                  , pNow      :: String
-                 , pName     :: String
+                 , pName     :: Maybe String
                  , pCom      :: Maybe String
                  , pFilename :: Maybe String
                  , pExt      :: Maybe String
