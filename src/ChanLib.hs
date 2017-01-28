@@ -28,7 +28,7 @@ data Thread = Thread { tNo          :: Int
                      , tTim         :: Int
                      , tTime        :: Int
                      , tMD5         :: String
-                     , tLastReplies :: Maybe [Post] } deriving Show
+                     , tLast_Replies :: Maybe [Post] } deriving Show
 
 data Post = Post { pNo       :: Int
                  , pNow      :: String
@@ -38,7 +38,6 @@ data Post = Post { pNo       :: Int
                  , pExt      :: Maybe String
                  , pW        :: Maybe Int
                  , pH        :: Maybe Int
-                 , pTim      :: Int
                  , pTime     :: Int
                  , pMD5      :: Maybe String } deriving Show
 
